@@ -100,11 +100,15 @@ python -m uvicorn main:app --reload --port 8000
 - Root: http://127.0.0.1:8000/
 - Swagger Docs: http://127.0.0.1:8000/docs
 
+---
+
 ## ✅ Notes
 
 1. This is a backend API only. No frontend UI is included.
 2. All API interactions should be done via Swagger UI or HTTP clients (Postman, curl).
 3. The live Render deployment URL is the easiest way to demo your project.
+
+---
 
 ## 📌 Author
 
