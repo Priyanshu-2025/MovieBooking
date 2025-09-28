@@ -6,11 +6,11 @@ from database import Base, engine, get_db
 # Create DB tables
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="Movie Booking - Complete")
+app = FastAPI(title="Movie Booking API")
 
-# ----------------------
-# Basic CRUD endpoints
-# ----------------------
+@app.get("/", tags=["Root"])
+def read_root():
+    return {"message": "Movie Booking API is running", "docs": "/docs"}
 
 # Movies
 @app.post("/movies/", response_model=schemas.Movie)
