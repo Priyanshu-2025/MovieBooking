@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Depends, HTTPException
+from fastapi.responses import HTMLResponse
 from sqlalchemy.orm import Session
 import crud, schemas, models
 from database import Base, engine, get_db
@@ -6,11 +7,28 @@ from database import Base, engine, get_db
 # Create DB tables
 Base.metadata.create_all(bind=engine)
 
+# FastAPI instance
 app = FastAPI(title="Movie Booking API")
 
-@app.get("/", tags=["Root"])
+# Root endpoint with friendly HTML
+@app.get("/", response_class=HTMLResponse, tags=["Root"])
 def read_root():
-    return {"message": "Movie Booking API is running", "docs": "/docs"}
+    html_content = """
+    <html>
+        <head>
+            <title>Movie Booking API</title>
+        </head>
+        <body style="font-family:Arial; text-align:center; margin-top:50px;">
+            <h1>🎬 Movie Booking API is Running!</h1>
+            <p>Welcome to the Movie Booking API demo.</p>
+            <ul style="list-style:none; padding:0;">
+                <li><a href="/docs" style="font-size:20px;">📄 API Docs (/docs)</a></li>
+                <li><a href="/seed_demo" style="font-size:20px;">⚡ Seed Demo Data (/seed_demo)</a></li>
+            </ul>
+        </body>
+    </html>
+    """
+    return HTMLResponse(content=html_content, status_code=200)
 
 # Movies
 @app.post("/movies/", response_model=schemas.Movie)
