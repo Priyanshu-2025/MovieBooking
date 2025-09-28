@@ -1,0 +1,6 @@
+﻿venv/
+movie_booking.db
+__pycache__/
+*.pyc
+.env
+.vscode/
