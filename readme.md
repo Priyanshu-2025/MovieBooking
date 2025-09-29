@@ -80,7 +80,7 @@ This will create:
 1. Clone the repo:
 
 ```bash
-git clone <your-github-repo-url>
+git clone https://github.com/Priyanshu-2025/MovieBooking
 cd MovieBooking
 ```
 
